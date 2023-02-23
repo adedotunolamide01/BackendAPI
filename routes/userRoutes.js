@@ -1,8 +1,15 @@
 import express from 'express';
 const router = express.Router();
-import { getUserPhotos } from '../controllers/userController.js';
-import { getAllUser } from '../controllers/userController.js';
+import {
+  registerUser,
+  loginUser,
+  getme,
+} from '../controllers/userController.js';
 
-router.route('/:username').get(getUserPhotos);
-router.route('/').get(getAllUser);
+import { protect } from '../middleware/authMiddleware.js';
+
+router.post('/', registerUser);
+router.post('/login', loginUser);
+router.get('/me', protect, getme);
+
 export default router;

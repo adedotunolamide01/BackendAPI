@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
 import photoRoutes from './routes/photoRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 const port = process.env.PORT;
 
@@ -14,5 +15,6 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/photos', photoRoutes);
+app.use('/api/photos/users', userRoutes);
 
 app.listen(port, () => console.log(` listening on port ${port}`));

@@ -14,8 +14,6 @@ export const getPhotoRoutes = async (req, res) => {
     const { data } = await axios.get(
       `https://api.unsplash.com/photos?client_id=${accessKey}&per_page=${perPage}&order_by=${orderBy}`
     );
-    console.log(data);
-    // const urls = data.map((photo) => photo.urls.raw);
     const urlsAndIds = data.map((photo) => ({
       id: photo.id,
       raw: photo.urls.raw,
@@ -26,8 +24,6 @@ export const getPhotoRoutes = async (req, res) => {
     res.status(500).json({ message: 'Server error. Please try again later.' });
   }
 };
-
-// module.exports = { getPhotoRoutes };
 
 export const getPhotoByIdRoute = async (req, res) => {
   try {

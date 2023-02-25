@@ -1,0 +1,6 @@
+UNSPLASH_ACCESS_KEY = pesEAwufEMt3LFwL7twnQjfTJvw4T68djTQ232Bqjcs
+UNSPLASH_SECRET_KEY = cJNL_oHMsnsYLUEG3vjGATt9ZlQxzuQGV9WqzGI_BP0
+PORT = 3000
+MONGO_URI = mongodb+srv://toyeseblog:3jJPxsDtgsrw0iyt@cluster0.ve9uhth.mongodb.net/bdassement?retryWrites=true&w=majority
+JWT_SECRET=backend
+NODE_ENV = development

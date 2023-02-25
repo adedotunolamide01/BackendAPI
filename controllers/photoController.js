@@ -8,6 +8,7 @@ const accessKey = process.env.UNSPLASH_ACCESS_KEY;
 const perPage = 10;
 const orderBy = 'popular';
 
+//fix /user
 export const getAllUser = asyncHandler(async (req, res) => {
   try {
     //fetching from the api
@@ -55,7 +56,6 @@ export const getUserPhotos = asyncHandler(async (req, res) => {
       url: photo.urls.raw,
     }));
 
-    // Send response with array of photo data
     res.status(200).json(photos);
   } catch (error) {
     const { data } = error.response;
@@ -63,12 +63,14 @@ export const getUserPhotos = asyncHandler(async (req, res) => {
   }
 });
 
-export const getPhotoRoutes = async (req, res) => {
+export const getPhotoRoutes = asyncHandler(async (req, res) => {
   try {
     //fetching from the api
     const { data } = await axios.get(
       `https://api.unsplash.com/photos?client_id=${accessKey}&per_page=${perPage}&order_by=${orderBy}`
     );
+
+    console.log(data);
     const urlsAndIds = data.map((photo) => ({
       id: photo.id,
       raw: photo.urls.raw,
@@ -78,9 +80,9 @@ export const getPhotoRoutes = async (req, res) => {
     console.error(error);
     res.status(500).json({ message: 'Server error. Please try again later.' });
   }
-};
+});
 
-export const getPhotoByIdRoute = async (req, res) => {
+export const getPhotoByIdRoute = asyncHandler(async (req, res) => {
   try {
     const response = await axios.get(
       `https://api.unsplash.com/photos/${req.params.id}?client_id=${accessKey}`
@@ -93,4 +95,4 @@ export const getPhotoByIdRoute = async (req, res) => {
     console.error(error);
     res.status(500).json({ message: 'Server error. Please try again later.' });
   }
-};
+});

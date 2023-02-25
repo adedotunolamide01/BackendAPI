@@ -9,7 +9,7 @@ import {
 
 router.route('/').get(getPhotoRoutes);
 router.route('/:id').get(getPhotoByIdRoute);
-router.route('/:username').get(getUserPhotos);
-router.route('/').get(getAllUser);
+router.route('/user/:username').get(getUserPhotos);
+router.route('/user').get(getAllUser);
 
 export default router;
